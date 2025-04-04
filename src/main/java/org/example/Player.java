@@ -9,8 +9,18 @@ public class Player {
         this.point = point;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (!(obj instanceof Player)) return false;
+        return name.equals(((Player) obj).name);
+    }
+
     public String getName() {
         return name;
+    }
+
+    public boolean is(String otherName) {
+        return otherName.equalsIgnoreCase(name);
     }
 
     public int getPoint() {
