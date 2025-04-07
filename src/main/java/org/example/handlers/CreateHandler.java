@@ -11,7 +11,7 @@ import java.util.Scanner;
 public class CreateHandler extends Handler {
     @Override
     public void start() {
-        System.out.println("Добро пожаловать в прорграмму по созданию и проигрыванию викторин,вводите вопросы которые хотите задать участникам,когда вопросы закончатся напишите exit");
+        System.out.println("Добро пожаловать в создание викторины, напишите название викторины, далее вопросы, когда вопросы закончатся напишите exit");
 
         Scanner scanner = new Scanner(System.in);
 
@@ -35,10 +35,21 @@ public class CreateHandler extends Handler {
             }
             System.out.println("Введите 4 варианта ответа,последним ОБЯЗАТЕЛЬНО вариант который будет являтся ответом: ");
 
-            String rawAnswer = scanner.nextLine();
+            String[] rawAnswer = new String[4];
+
+            String rawAnswers = null;
+            for (int i = 0; i < 4; i++) {
+                rawAnswers = rawAnswer[i];
+            }
+
+
+            ArrayList<String> answer = new ArrayList<>();
+            answer.add(rawAnswers);
+
 
             //
-            questions.add(new Question(rawAnswer, a));
+            questions.add(new Question(rawQuestion, answer, ));
+            System.out.println(rawAnswer.indexOf(3));
 
         }
         return questions;

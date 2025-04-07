@@ -13,7 +13,9 @@ public class PlayHandler extends Handler {
 
     @Override
     public void start() {
+        System.out.println("Напиите название желаемой викторины");
         Scanner scanner = new Scanner(System.in);
+
 
         Quiz quiz = getQuiz(scanner);
         ArrayList<Player> players = createPlayers(scanner);
@@ -22,22 +24,25 @@ public class PlayHandler extends Handler {
         for (Question question : quiz.getQuestions()){
             System.out.println(question.getText());
             printAnswers(question.getAnswers());
-            System.out.print("Введите правильный ответ и укажите имя того,кто отвечал: ");
+            System.out.print("Введите номер правильного ответ и укажите имя того,кто отвечал: ");
             String userAnswer = scanner.nextLine();
-            String[] user = userAnswer.split(" "); // 10 андрей иванов
-            int playerPos = players.indexOf("ндрей иванов");
-            if (playerPos != -1) {
-
-            }
-            Player player = players.get(playerPos);
-
-            if (userAnswer.equalsIgnoreCase(trueAnswer.get(i))){
+            String[] user = userAnswer.split(" ");
+            int trueAnswer = Integer.parseInt(user[0]);
+            if (trueAnswer == question.getTrueAnswer()){
                 System.out.println("Правильный ответ!");
-            } else  {
-                System.out.println("Неправильный ответ :(");
             }
+            else System.out.println("Неправильный ответ :(");
+
+//            int playerPos = players.indexOf("ндрей иванов");
+  //          if (playerPos != -1) {
+
+            }
+    //        Player player = players.get(playerPos);
+
+
+
         }
-    }
+  //  }
 
     private Quiz getQuiz(Scanner scanner) {
         Quiz quiz;
@@ -51,7 +56,7 @@ public class PlayHandler extends Handler {
             if (quiz == null) continue;
             break;
         }
-        ///
+
 
         return quiz;
     }
